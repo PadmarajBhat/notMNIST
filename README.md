@@ -19,3 +19,25 @@ tar.close()
   
 ##### IntelliJ installation for easy project management
  * post installation search for plugins in help tab and install scala.
+
+##### In Databricks
+* I could read the images dir through
+```
+df = spark.read.format("image") \
+  .option("inferSchema", infer_schema) \
+  .option("header", first_row_is_header) \
+  .option("sep", delimiter) \
+  .load(file_location)
+
+display(df)
+
+Output:
+root
+ |-- image: struct (nullable = true)
+ |    |-- origin: string (nullable = true)
+ |    |-- height: integer (nullable = true)
+ |    |-- width: integer (nullable = true)
+ |    |-- nChannels: integer (nullable = true)
+ |    |-- mode: integer (nullable = true)
+ |    |-- data: binary (nullable = true)
+```
