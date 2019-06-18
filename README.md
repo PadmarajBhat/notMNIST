@@ -13,3 +13,8 @@ sys.stdout.flush()
 tar.extractall()
 tar.close()
 ```
+
+##### install scala through sbt
+  * through "sbt console" tried basics of scala syntax
+  
+  
