@@ -17,4 +17,5 @@ tar.close()
 ##### install scala through sbt
   * through "sbt console" tried basics of scala syntax
   
-  
+##### IntelliJ installation for easy project management
+ * post installation search for plugins in help tab and install scala.
