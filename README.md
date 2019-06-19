@@ -41,3 +41,4 @@ root
  |    |-- mode: integer (nullable = true)
  |    |-- data: binary (nullable = true)
 ```
+* So far its been pyspark, let us try for scala : https://dzone.com/articles/working-on-apache-spark-on-windows
