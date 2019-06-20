@@ -45,3 +45,5 @@ root
 * you would also need the guideline for windows as in : https://stackoverflow.com/questions/27618843/why-does-spark-submit-and-spark-shell-fail-with-failed-to-find-spark-assembly-j/27628786
 
 * Databricks files are access through : os.path.isfile("/dbfs/FileStore/tables/images/Q291bnRyeXNpZGUgQmxhY2sgU1NpIEV4dHJhIEJvbGQudHRm.png")
+
+* to cast : https://alvinalexander.com/scala/how-to-cast-objects-class-instance-in-scala-asinstanceof
