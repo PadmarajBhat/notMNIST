@@ -52,3 +52,7 @@ root
   df.select("image.origin").show()
   Note that df["image"]["origin"].show() would not work. Panda way of accessing data is not possible.
   ```
+  
+  * unfortunately, databricks do not let us import any of the packages they support like sparkdl. So, going back to installing scala on local and trying to run the "Hello World"
+    * https://www.youtube.com/watch?v=A2c4mDDn-QM indicates the scala setup instructions.
+  
