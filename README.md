@@ -57,3 +57,5 @@ root
     * https://www.youtube.com/watch?v=A2c4mDDn-QM indicates the scala setup instructions.
   
  * https://www.scala-exercises.org/scala_tutorial/imperative_programming
+ 
+ * https://www.scala-exercises.org/scala_tutorial/classes_vs_case_classes
