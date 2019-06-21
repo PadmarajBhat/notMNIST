@@ -47,3 +47,8 @@ root
 * Databricks files are access through : os.path.isfile("/dbfs/FileStore/tables/images/Q291bnRyeXNpZGUgQmxhY2sgU1NpIEV4dHJhIEJvbGQudHRm.png")
 
 * to cast : https://alvinalexander.com/scala/how-to-cast-objects-class-instance-in-scala-asinstanceof
+  *  or we can access directly the substructure through:
+  ```
+  df.select("image.origin").show()
+  Note that df["image"]["origin"].show() would not work. Panda way of accessing data is not possible.
+  ```
