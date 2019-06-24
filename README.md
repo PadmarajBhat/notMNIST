@@ -56,6 +56,15 @@ root
   * unfortunately, databricks do not let us import any of the packages they support like sparkdl. So, going back to installing scala on local and trying to run the "Hello World"
     * https://www.youtube.com/watch?v=A2c4mDDn-QM indicates the scala setup instructions.
   
- * https://www.scala-exercises.org/scala_tutorial/imperative_programming
- 
- * https://www.scala-exercises.org/scala_tutorial/classes_vs_case_classes
+  * Goind ahead with image conversion at databricks itself.
+  ```
+  import java.io.File
+  import javax.imageio.ImageIO
+  import java.awt.image.BufferedImage
+  val photo1 = ImageIO.read(new File("/dbfs/FileStore/tables/images/Q291bnRyeXNpZGUgQmxhY2sgU1NpIEV4dHJhIEJvbGQudHRm.png"))
+  ```
+  Above piece of code reads the file and then gives the output photo1:
+  
+  ```
+  res0: java.awt.image.BufferedImage = BufferedImage@31679bff: type = 10 ColorModel: #pixelBits = 8 numComponents = 1 color space = java.awt.color.ICC_ColorSpace@50be2132 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 28 height = 28 #numDataElements 1 dataOff[0] = 0
+  ```
