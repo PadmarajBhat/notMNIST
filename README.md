@@ -56,7 +56,7 @@ root
   * unfortunately, databricks do not let us import any of the packages they support like sparkdl. So, going back to installing scala on local and trying to run the "Hello World"
     * https://www.youtube.com/watch?v=A2c4mDDn-QM indicates the scala setup instructions.
   
-  * Going ahead with image conversion at databricks itself.
+  * Going ahead with image conversion at databricks itself. Thanks to : http://otfried.org/scala/image.html
   ```
   import java.io.File
   import javax.imageio.ImageIO
@@ -73,6 +73,6 @@ root
   ```
     for (x <- 0 until 28)
     for (y <- 0 until 28)
-      println(photo1.getRGB(x,y)) // & 0xffffff)
+      println(photo1.getRGB(x,y).toHexString, (photo1.getRGB(x,y) & 0xffffff).toHexString)
   ```
   Here 0xffffff acts like a complementing binary value. i.e. to convert a negative number to positive number facilitating our future calculations.
