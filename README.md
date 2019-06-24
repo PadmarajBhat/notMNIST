@@ -76,3 +76,15 @@ root
       println(photo1.getRGB(x,y).toHexString, (photo1.getRGB(x,y) & 0xffffff).toHexString)
   ```
   Here 0xffffff acts like a complementing binary value. i.e. to convert a negative number to positive number facilitating our future calculations.
+  
+  * Here is how data is moved to array. Silly but my first time :)
+  ```
+  val arr = Array.ofDim[Int](28, 28)  
+
+  for (x <- 0 until 28)
+      for (y <- 0 until 28)
+        //println(photo1.getRGB(x,y).toHexString, (photo1.getRGB(x,y) & 0xffffff).toHexString)
+        arr(x)(y) = photo1.getRGB(x,y) & 0xffffff
+
+  println(arr)
+  ```
