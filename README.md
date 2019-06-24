@@ -56,7 +56,7 @@ root
   * unfortunately, databricks do not let us import any of the packages they support like sparkdl. So, going back to installing scala on local and trying to run the "Hello World"
     * https://www.youtube.com/watch?v=A2c4mDDn-QM indicates the scala setup instructions.
   
-  * Goind ahead with image conversion at databricks itself.
+  * Going ahead with image conversion at databricks itself.
   ```
   import java.io.File
   import javax.imageio.ImageIO
@@ -68,3 +68,11 @@ root
   ```
   res0: java.awt.image.BufferedImage = BufferedImage@31679bff: type = 10 ColorModel: #pixelBits = 8 numComponents = 1 color space = java.awt.color.ICC_ColorSpace@50be2132 transparency = 1 has alpha = false isAlphaPre = false ByteInterleavedRaster: width = 28 height = 28 #numDataElements 1 dataOff[0] = 0
   ```
+  
+  * Now that we have read the image binary, we can use BufferedImage for further processing
+  ```
+    for (x <- 0 until 28)
+    for (y <- 0 until 28)
+      println(photo1.getRGB(x,y)) // & 0xffffff)
+  ```
+  Here 0xffffff acts like a complementing binary value. i.e. to convert a negative number to positive number facilitating our future calculations.
