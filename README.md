@@ -119,3 +119,37 @@ root
 arr
 })
  ```
+* Following fixed above issue:
+```
+def imageToArray(imageName : String): Either[Array[Array[Double]], Int] = {
+  //println(imageName)
+  val photo1 = ImageIO.read(new File(imageName))
+  val arr = Array.ofDim[Double](28, 28)  
+  val pixel_depth = 255
+  
+  try{
+    for (x <- 0 until 28)
+     for (y <- 0 until 28)
+      //println(photo1.getRGB(x,y).toHexString, (photo1.getRGB(x,y) & 0xffffff).toHexString)
+      //arr(x)(y) = photo1.getRGB(x,y) & 0xffffff
+      arr(x)(y) = ((photo1.getRGB(x,y) & 0xffffff) - (pixel_depth.toDouble/2))/pixel_depth.toDouble    
+    Left(arr)
+  } catch {
+    case ex: NullPointerException =>{
+
+      println("NullPointerException Exception for " + imageName)
+      Right(0)
+    }
+  }
+  
+
+}
+
+
+val dataset_a =  (new File("/dbfs/FileStore/tables/images/")).listFiles.map(x=>{ val output = imageToArray(x.toString) 
+                                                                                if (output.isLeft)
+                                                                                  output.left.get
+                                                                                else
+                                                                                println("Ingoring : "+ x)
+                                                                               })
+```
