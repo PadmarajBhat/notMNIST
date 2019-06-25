@@ -88,3 +88,8 @@ root
 
   println(arr)
   ```
+  
+  * Arithmetic operation: normalizing the image.
+  ```
+   arr(x)(y) = ((photo1.getRGB(x,y) & 0xffffff) - (pixel_depth.toDouble/2))/pixel_depth.toDouble
+  ```
