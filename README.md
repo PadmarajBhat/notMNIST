@@ -93,3 +93,14 @@ root
   ```
    arr(x)(y) = ((photo1.getRGB(x,y) & 0xffffff) - (pixel_depth.toDouble/2))/pixel_depth.toDouble
   ```
+
+ * To read all the files in directory:
+ ```
+ import java.io.File
+ def recursiveListFiles(f: File): Array[File] = {
+   val these = f.listFiles
+   these ++ these.filter(_.isDirectory).flatMap(recursiveListFiles)
+ }
+
+ recursiveListFiles(new File("/dbfs/FileStore/tables/images/"))
+ ```
