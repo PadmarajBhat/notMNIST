@@ -186,3 +186,5 @@ image_val.take(2)
 ```
 org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 0.0 failed 1 times, most recent failure: Lost task 0.0 in stage 0.0 (TID 0, localhost, executor driver): java.lang.ClassCastException: org.apache.spark.sql.catalyst.expressions.GenericRowWithSchema cannot be cast to java.awt.image.BufferedImage
 ```
+
+* https://stackoverflow.com/questions/10866639/difference-between-a-seq-and-a-list-in-scala
