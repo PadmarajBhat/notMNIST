@@ -188,5 +188,9 @@ org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in sta
 ```
 
 * https://stackoverflow.com/questions/10866639/difference-between-a-seq-and-a-list-in-scala
+```
+val data = Seq("Hello", "World!"); data(0).contains("He");
+```
+* Here it returns boolean result of true
 
 * Need to try pickling in scala: https://stackoverflow.com/questions/17539375/storing-an-object-to-a-file
