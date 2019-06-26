@@ -188,3 +188,5 @@ org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in sta
 ```
 
 * https://stackoverflow.com/questions/10866639/difference-between-a-seq-and-a-list-in-scala
+
+* Need to try pickling in scala: https://stackoverflow.com/questions/17539375/storing-an-object-to-a-file
