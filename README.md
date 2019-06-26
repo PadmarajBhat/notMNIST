@@ -153,3 +153,36 @@ val dataset_a =  (new File("/dbfs/FileStore/tables/images/")).listFiles.map(x=>{
                                                                                 println("Ingoring : "+ x)
                                                                                })
 ```
+
+* Image df interesting failure
+```
+val image_val = image_df.select("image.data").rdd.map(photo =>{
+  
+  val photo1 = photo.asInstanceOf[java.awt.image.BufferedImage]
+  val arr = Array.ofDim[Double](28, 28)
+  val pixel_depth = 255
+  
+  try{
+    for (x <- 0 until 28)
+     for (y <- 0 until 28)
+      {
+        println(photo1.getRGB(x,y).toHexString, (photo1.getRGB(x,y) & 0xffffff).toHexString)
+        //arr(x)(y) = photo1.getRGB(x,y) & 0xffffff
+        arr(x)(y) = ((photo1.getRGB(x,y) & 0xffffff) - (pixel_depth.toDouble/2))/pixel_depth.toDouble    
+      }
+    arr
+  } catch {
+    case ex: NullPointerException =>{
+
+      println("NullPointerException Exception for ")
+      0
+    }
+  
+}})
+
+image_val.take(2)
+```
+* It fails with :
+```
+org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 0.0 failed 1 times, most recent failure: Lost task 0.0 in stage 0.0 (TID 0, localhost, executor driver): java.lang.ClassCastException: org.apache.spark.sql.catalyst.expressions.GenericRowWithSchema cannot be cast to java.awt.image.BufferedImage
+```
