@@ -196,6 +196,7 @@ val data = Seq("Hello", "World!"); data(0).contains("He");
 * Here it returns boolean result of true
 
 * Need to try pickling in scala: https://stackoverflow.com/questions/17539375/storing-an-object-to-a-file
+  * https://github.com/scala/pickling : both these link did not work in databricks notebook. Could not do the library import too. may be downloading jar and uploading might work.
 
 * Next is to convert the 3d array to dataframe for org.apache.spark.ml libraries
   * dataset_a.toDF() fails ```value toDF is not a member of Array[Any] ```
