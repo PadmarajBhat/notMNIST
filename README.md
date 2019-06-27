@@ -153,7 +153,7 @@ val dataset_a =  (new File("/dbfs/FileStore/tables/images/")).listFiles.map(x=>{
                                                                                 println("Ingoring : "+ x)
                                                                                })
 ```
-
+  * However, here problem is that the dataset_a is of type Array[Any] and hence dataset_a(0)(0)(0) fails
 * Image df interesting failure
 ```
 val image_val = image_df.select("image.data").rdd.map(photo =>{
