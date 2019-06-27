@@ -154,6 +154,8 @@ val dataset_a =  (new File("/dbfs/FileStore/tables/images/")).listFiles.map(x=>{
                                                                                })
 ```
   * However, here problem is that the dataset_a is of type Array[Any] and hence dataset_a(0)(0)(0) fails
+  * Interestingly, ``` dataset_a(0).asInstanceOf[Array[Array[Double]]](0)``` displays the array of first image first row of 28x28 matrix
+  * But this ```dataset_a.asInstanceOf[Array[Array[Array[Double]]]](0)(0)(0)``` fails with error ```java.lang.ClassCastException: [Ljava.lang.Object; cannot be cast to [[[D```
 * Image df interesting failure
 ```
 val image_val = image_df.select("image.data").rdd.map(photo =>{
