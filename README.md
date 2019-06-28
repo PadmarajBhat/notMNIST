@@ -200,3 +200,16 @@ val data = Seq("Hello", "World!"); data(0).contains("He");
 
 * Next is to convert the 3d array to dataframe for org.apache.spark.ml libraries
   * dataset_a.toDF() fails ```value toDF is not a member of Array[Any] ```
+  * Idea is to have the spark DF built like this:
+   ```
+   val feature : Array[Array[Int]] = Array(Array(1,2,3,4),Array(2,3,4,5))
+   val lable: Int = 10
+
+   val row = List((feature,lable))
+
+   val row_rdd = spark.sparkContext.parallelize(row)
+
+
+   row_rdd.toDF("features","labels").show(truncate=false)
+
+   ```
