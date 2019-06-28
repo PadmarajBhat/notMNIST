@@ -255,4 +255,12 @@ val data = Seq("Hello", "World!"); data(0).contains("He");
      * tuple creation through ```(())```
      * can we create the tuple during our initial map to avoid and code related issue
    
-   
+   * Failed Again:
+     ```
+     val listBuffer = new ArrayBuffer[(Array[Array[Double]],String)]
+
+     for (e <- dataset_a)
+     //println(e.asInstanceOf[(Array[Array[Double]],Char)]._1.asInstanceOf[Array[Array[Double]]])
+     //println(e.asInstanceOf[(Array[Array[Double]],Char)])
+       listBuffer += ((e.asInstanceOf[(Array[Array[Double]],String)]._1, e.asInstanceOf[(Array[Array[Double]],String)]._2))
+     ```
