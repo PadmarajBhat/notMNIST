@@ -228,3 +228,31 @@ val data = Seq("Hello", "World!"); data(0).contains("He");
    val row_rdd = spark.sparkContext.parallelize(row)
    row_rdd.toDF("features","labels").show(truncate=false)
    ```
+   
+   * Output:
+   ```
+   +----------------------------+------+
+   |features                    |labels|
+   +----------------------------+------+
+   |[[1, 2, 3, 4], [2, 3, 4, 5]]|10    |
+   |[[1, 2, 3, 4], [2, 3, 4, 5]]|20    |
+   |[[1, 2, 3, 4], [2, 3, 4, 5]]|30    |
+   |[[1, 2, 3, 4], [2, 3, 4, 5]]|10    |
+   |[[1, 2, 3, 4], [2, 3, 4, 5]]|20    |
+   |[[1, 2, 3, 4], [2, 3, 4, 5]]|30    |
+   |[[1, 2, 3, 4], [2, 3, 4, 5]]|10    |
+   |[[1, 2, 3, 4], [2, 3, 4, 5]]|20    |
+   |[[1, 2, 3, 4], [2, 3, 4, 5]]|30    |
+   +----------------------------+------+
+
+   import scala.collection.mutable.ArrayBuffer
+   feature: Array[Array[Array[Int]]] = Array(Array(Array(1, 2, 3, 4), Array(2, 3, 4, 5)), Array(Array(1, 2, 3, 4), Array(2, 3, 4, 5)), Array(Array(1, 2, 3, 4), Array(2, 3, 4, 5)))
+   lable: Array[Int] = Array(10, 20, 30)
+   row: scala.collection.mutable.ArrayBuffer[(Array[Array[Int]], Int)] = ArrayBuffer((Array(Array(1, 2, 3, 4), Array(2, 3, 4, 5)),10), (Array(Array(1, 2, 3, 4), Array(2, 3, 4, 5)),20), (Array(Array(1, 2, 3, 4), Array(2, 3, 4, 5)),30), (Array(Array(1, 2, 3, 4), Array(2, 3, 4, 5)),10), (Array(Array(1, 2, 3, 4), Array(2, 3, 4, 5)),20), (Array(Array(1, 2, 3, 4), Array(2, 3, 4, 5)),30), (Array(Array(1, 2, 3, 4), Array(2, 3, 4, 5)),10), (Array(Array(1, 2, 3, 4), Array(2, 3, 4, 5)),20), (Array(Array(1, 2, 3, 4), Array(2, 3, 4, 5)),30))
+   row_rdd: org.apache.spark.rdd.RDD[(Array[Array[Int]], Int)] = ParallelCollectionRDD[30] at parallelize at command-1740298291896335:10
+   ```
+     * Here, I am using ArrayBuffered as List in python
+     * tuple creation through ```(())```
+     * can we create the tuple during our initial map to avoid and code related issue
+   
+   
