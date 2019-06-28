@@ -213,3 +213,18 @@ val data = Seq("Hello", "World!"); data(0).contains("He");
    row_rdd.toDF("features","labels").show(truncate=false)
 
    ```
+   
+   * Approach 2: simulating our multidimension case
+   ```
+   import scala.collection.mutable.ArrayBuffer
+   val feature : Array[Array[Array[Int]]] = Array(Array(Array(1,2,3,4),Array(2,3,4,5)),Array(Array(1,2,3,4),Array(2,3,4,5)),Array(Array(1,2,3,4),Array(2,3,4,5)))
+   val lable: Array[Int] = Array(10,20,30)
+
+   val row = new ArrayBuffer[(Array[Array[Int]], Int)]
+   for (f <- feature; l <- lable)
+     row += ((f,l))
+   //val row = Array((feature,lable))
+
+   val row_rdd = spark.sparkContext.parallelize(row)
+   row_rdd.toDF("features","labels").show(truncate=false)
+   ```
