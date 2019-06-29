@@ -294,3 +294,11 @@ val data = Seq("Hello", "World!"); data(0).contains("He");
           println("Ingoring : "+ file)
        }
       ```
+     * Missing panda... df[df['label'] == 'B'] but iteresting scala syntax to filter rows from dataframe
+     ```
+     df.filter(df("label") === "B").show()
+     df.where($"label" === "B").show()
+     df.filter("label = 'B'").show()
+     df.where("label = 'B'").show()
+     ```
+     
