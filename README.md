@@ -264,3 +264,18 @@ val data = Seq("Hello", "World!"); data(0).contains("He");
      //println(e.asInstanceOf[(Array[Array[Double]],Char)])
        listBuffer += ((e.asInstanceOf[(Array[Array[Double]],String)]._1, e.asInstanceOf[(Array[Array[Double]],String)]._2))
      ```
+    * following worked :)
+     ```
+     val row_1 = new ArrayBuffer[(Array[Array[Double]], String)]
+
+     for (file <- (new File("/dbfs/FileStore/tables/images/")).listFiles){
+       val output = imageToArray(file.toString) 
+       if (output.isLeft)
+         row_1 +=((output.left.get , "A"))
+       else
+         println("Ingoring : "+ file)
+     }
+     val df = spark.sparkContext.parallelize(row_1).toDF("feature", "label")
+     df.show()
+     ```
+     
