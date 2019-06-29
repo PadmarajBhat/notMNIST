@@ -302,3 +302,22 @@ val data = Seq("Hello", "World!"); data(0).contains("He");
      df.where("label = 'B'").show()
      ```
      
+     * oops.... to concatenate strings
+     ```
+     import org.apache.spark.sql.functions.{concat, lit}
+     df.withColumn("label_new", concat($"label",lit("_new"))).show()
+     
+     Output:
+     +--------------------+-----+---------+
+     |             feature|label|label_new|
+     +--------------------+-----+---------+
+     |[[62954.370588235...|    A|    A_new|
+     |[[5675.7588235294...|    B|    B_new|
+     |[[-0.5, -0.5, -0....|    B|    B_new|
+     |[[-0.5, -0.5, -0....|    B|    B_new|
+     |[[-0.5, -0.5, -0....|    D|    D_new|
+     |[[-0.5, -0.5, -0....|    C|    C_new|
+     |[[-0.5, -0.5, -0....|    A|    A_new|
+     |[[-0.5, -0.5, -0....|    B|    B_new|
+     ```
+     
