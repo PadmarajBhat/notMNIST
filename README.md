@@ -278,4 +278,19 @@ val data = Seq("Hello", "World!"); data(0).contains("He");
      val df = spark.sparkContext.parallelize(row_1).toDF("feature", "label")
      df.show()
      ```
-     
+    * introduced little randomness for the ease of access
+      ```
+      val row_1 = new ArrayBuffer[(Array[Array[Double]], String)]
+      val listLables = List("A","B","C","D")
+      val r = scala.util.Random
+
+      for (file <- (new File("/dbfs/FileStore/tables/images/")).listFiles){
+
+
+        val output = imageToArray(file.toString) 
+        if (output.isLeft)
+          row_1 +=((output.left.get , listLables(r.nextInt(4))))
+        else
+          println("Ingoring : "+ file)
+       }
+      ```
