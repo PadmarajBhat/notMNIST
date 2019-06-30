@@ -348,4 +348,12 @@ val data = Seq("Hello", "World!"); data(0).contains("He");
      Caused by: java.lang.ClassCastException: scala.collection.mutable.WrappedArray$ofRef cannot be cast to [[D
      ```
   * the fundamental approach has to be changed.....we have to map the 2d image 1d image.
-  
+    * First hurdle: 
+     ```val (rowSize, colSize )= (28,10)
+        val arr = Array.ofDim[Double](rowSize, 28)
+        println(arr.size, arr(0).size)
+        
+        Output:
+        (28,28)
+        ```
+
