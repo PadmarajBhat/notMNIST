@@ -344,6 +344,8 @@ val data = Seq("Hello", "World!"); data(0).contains("He");
      Output:
      ```
      org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 53.0 failed 1 times, most recent failure: Lost task 0.0 in stage 53.0 (TID 763, localhost, executor driver): org.apache.spark.SparkException: Failed to execute user defined function($anonfun$1: (array<array<double>>) => int)
+     
+     Caused by: java.lang.ClassCastException: scala.collection.mutable.WrappedArray$ofRef cannot be cast to [[D
      ```
   * the fundamental approach has to be changed.....we have to map the 2d image 1d image.
   
