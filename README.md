@@ -321,3 +321,27 @@ val data = Seq("Hello", "World!"); data(0).contains("He");
      |[[-0.5, -0.5, -0....|    B|    B_new|
      ```
      
+     * Again the same problem:
+     ```
+     import org.apache.spark.sql.functions.{col,udf}
+
+
+
+     val calculateAverage = udf((multiArray: Array[Array[Double]])=>{
+       1
+     })
+     df.withColumn("avg_feature", calculateAverage(col("feature"))).take(1)
+
+     /*
+
+     val calculateAverage = udf((label: String)=>{
+       1
+     })
+     df.withColumn("avg_c", calculateAverage(col("label"))).take(1)
+
+     */
+     ```
+     Output:
+     ```
+     org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 53.0 failed 1 times, most recent failure: Lost task 0.0 in stage 53.0 (TID 763, localhost, executor driver): org.apache.spark.SparkException: Failed to execute user defined function($anonfun$1: (array<array<double>>) => int)
+     ```
