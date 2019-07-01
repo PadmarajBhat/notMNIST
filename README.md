@@ -377,3 +377,5 @@ val data = Seq("Hello", "World!"); data(0).contains("He");
  val array = Array((for(i <- 0 to 10) yield scala.util.Random.nextInt): _*)
  scala.util.Sorting.quickSort(array)
  ```
+* https://alvinalexander.com/scala/how-to-sort-map-in-scala-key-value-sortby-sortwith
+   * to sort map values
