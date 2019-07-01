@@ -356,4 +356,20 @@ val data = Seq("Hello", "World!"); data(0).contains("He");
         Output:
         (28,28)
         ```
+        
+   * We do not need 2d array
+    ```
+    val int_arr = new Array[Int](10)
+    var k = 0
+    for (i <- (0 to 2)){
+      for (j <- (0 to 2 )){
+        int_arr(k) = i
+        k += 1
+      }
+
+    }
+    Output:
+    int_arr: Array[Int] = Array(0, 0, 0, 1, 1, 1, 2, 2, 2, 0)
+    k: Int = 9
+    ```
 
