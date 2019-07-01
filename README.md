@@ -372,4 +372,8 @@ val data = Seq("Hello", "World!"); data(0).contains("He");
     int_arr: Array[Int] = Array(0, 0, 0, 1, 1, 1, 2, 2, 2, 0)
     k: Int = 9
     ```
-
+* to sort an array : https://stackoverflow.com/questions/1131925/how-do-i-sort-an-array-in-scala
+ ```
+ val array = Array((for(i <- 0 to 10) yield scala.util.Random.nextInt): _*)
+ scala.util.Sorting.quickSort(array)
+ ```
