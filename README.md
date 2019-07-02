@@ -428,3 +428,18 @@ val data = Seq("Hello", "World!"); data(0).contains("He");
    
    * display(df.where("label = 'C'").select("mean")) : played around plot options in databricks notebook 
       * display(df.where("label = 'C'").select("mean","median"))  : sigmoid like shape was observed. Does that mean that 2 ends are outlier?
+* Key commands for observations
+  ```
+  df.groupBy("label").avg().select("avg(median)").withColumnRenamed("avg(median)", "median_avg").show()
+  df.groupBy("label").avg("median").show()
+  df.groupBy("label").avg().show()
+  
+  Output:
+  +-----+------------------+------------------+----------------+-----------------+
+  |label|       avg(median)|         avg(mean)|        avg(min)|         avg(max)|
+  +-----+------------------+------------------+----------------+-----------------+
+  |    B|19910.745056320397| 27437.68394421599|            -0.5|65717.33454317896|
+  |    C|19337.877743989357|27376.765464085478|            -0.5|65740.39746270074|
+  |    A|18633.379023126377|   27158.447598599|21.8077055944727|65670.43896938874|
+  +-----+------------------+------------------+----------------+-----------------+
+  ```
