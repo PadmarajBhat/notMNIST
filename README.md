@@ -379,3 +379,25 @@ val data = Seq("Hello", "World!"); data(0).contains("He");
  ```
 * https://alvinalexander.com/scala/how-to-sort-map-in-scala-key-value-sortby-sortwith
    * to sort map values
+
+* to find an median : http://fruzenshtein.com/scala-median-funciton/
+   ```
+   val aSet = Seq(3, 5, 10, 11, 19)
+   val bSet = Seq(1, 5, 14, 16, 17, 20)
+
+
+   def medianCalculator(seq: Seq[Int]): Int = {
+     //In order if you are not sure that 'seq' is sorted
+     val sortedSeq = seq.sortWith(_ < _)
+
+     if (seq.size % 2 == 1) sortedSeq(sortedSeq.size / 2)
+     else {
+       val (up, down) = sortedSeq.splitAt(seq.size / 2)
+       (up.last + down.head) / 2
+     }
+   }
+
+   medianCalculator(aSet) //10
+   medianCalculator(bSet) //15
+   ```
+   But this logic does not work for Double type
