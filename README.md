@@ -425,3 +425,6 @@ val data = Seq("Hello", "World!"); data(0).contains("He");
    medianDCalculator(bDSet) //15 
    ```
    *  ```(Double, Double, Double, Double) = (15.0,12.166666666666666,1.0,20.0)``` array does have numpy like function in them. Scala is not that bad. If it could only have mean and median in them, I would have called it good.
+   
+   * display(df.where("label = 'C'").select("mean")) : played around plot options in databricks notebook 
+      * display(df.where("label = 'C'").select("mean","median"))  : sigmoid like shape was observed. Does that mean that 2 ends are outlier?
