@@ -401,3 +401,27 @@ val data = Seq("Hello", "World!"); data(0).contains("He");
    medianCalculator(bSet) //15
    ```
    But this logic does not work for Double type
+   
+   * tweaked code to support Double type
+   ```
+   val aDSet = Array(30.0, 5.0, 10.0, 11.0, 19.0)
+   val bDSet = Array(1.0, 5.0, 14.0, 16.0, 17.0, 20.0)
+
+
+   def medianDCalculator(seq: Array[Double]): (Double,Double,Double,Double) = {
+     //In order if you are not sure that 'seq' is sorted
+     //val sortedSeq = seq.sortWith(_ :Double < _:Double)
+
+     scala.util.Sorting.quickSort(seq)
+
+     if (seq.size % 2 == 1) ((seq(seq.size / 2), seq.sum / seq.size, seq.min, seq.max))
+     else {
+       val (up, down) = seq.splitAt(seq.size / 2)
+       (((up.last + down.head) / 2, seq.sum / seq.size, seq.min, seq.max))
+     }
+   }
+
+   medianDCalculator(aDSet) //10
+   medianDCalculator(bDSet) //15 
+   ```
+   *  ```(Double, Double, Double, Double) = (15.0,12.166666666666666,1.0,20.0)``` array does have numpy like function in them. Scala is not that bad. If it could only have mean and median in them, I would have called it good.
