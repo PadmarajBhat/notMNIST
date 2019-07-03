@@ -443,3 +443,20 @@ val data = Seq("Hello", "World!"); data(0).contains("He");
   |    A|18633.379023126377|   27158.447598599|21.8077055944727|65670.43896938874|
   +-----+------------------+------------------+----------------+-----------------+
   ```
+  
+ * Attempt to scale the values
+ ```
+ //https://stackoverflow.com/questions/33924842/minmax-normalization-in-scala
+import org.apache.spark.ml.feature.MinMaxScaler
+
+val scaler = new MinMaxScaler()
+    .setInputCol("median")
+    .setOutputCol("medianScaled")
+    .setMax(1.0)
+    .setMin(-1.0)
+
+scaler.setInputCol("median").setOutputCol("scaledMedian").fit(df).transform(df).show
+
+Output:
+java.lang.IllegalArgumentException: requirement failed: Column median must be of type struct<type:tinyint,size:int,indices:array<int>,values:array<double>> but was actually double.
+ ```
