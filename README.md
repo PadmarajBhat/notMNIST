@@ -470,4 +470,5 @@ java.lang.IllegalArgumentException: requirement failed: Column median must be of
 |-0.5              |[-0.7160680736187367]  |
  ```
 
- * 
+ * need to covert to array as indicated in : https://stackoverflow.com/questions/32196207/derive-multiple-columns-from-a-single-column-in-a-spark-dataframe
+   * but it looks too length; need to find easy way out.
