@@ -460,3 +460,14 @@ scaler.setInputCol("median").setOutputCol("scaledMedian").fit(df).transform(df).
 Output:
 java.lang.IllegalArgumentException: requirement failed: Column median must be of type struct<type:tinyint,size:int,indices:array<int>,values:array<double>> but was actually double.
  ```
+ * Vectorizing has resulted in the 1d array of each cell post scaling which is not expected :(
+ ```
+ +------------------+-----------------------+
+|median            |vscaled                |
++------------------+-----------------------+
+|33541.029411764706|[-0.1306203600678536]  |
+|65792.5           |[0.46896983626093824]  |
+|-0.5              |[-0.7160680736187367]  |
+ ```
+
+ * 
