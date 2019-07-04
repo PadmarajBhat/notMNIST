@@ -476,6 +476,19 @@ java.lang.IllegalArgumentException: requirement failed: Column median must be of
  * vectorIndexer also do not converts to the indexed value : https://spark.apache.org/docs/latest/ml-features.html#vectorindexer
  * we need to understand the example given below clearly:
  ```
+ 
+ val df = Seq( (1 , linalg.Vectors.dense(1,0,1,1,0) ) ).toDF("id", "features")
+ df.show
+ df.printSchema
+ val df1 = Seq( (1 , List(1,0,1,1,0) ) ).toDF("id", "features")
+ df1.show
+ df1.printSchema
+
+ val df2 = Seq( (1 , Array(1,0,1,1,0) ) ).toDF("id", "features")
+ df2.show
+ df2.printSchema
+ 
+ 
  root
   |-- id: integer (nullable = false)
   |-- features: vector (nullable = true)
@@ -500,35 +513,38 @@ java.lang.IllegalArgumentException: requirement failed: Column median must be of
  ```
  * Below makes it difficult at first go but it s straight forward
  ```
- val df = Seq( (1 , linalg.Vectors.dense(1,0,1,1,0) ) ).toDF("id", "features")
- df.show
- df.printSchema
- val df1 = Seq( (1 , List(1,0,1,1,0) ) ).toDF("id", "features")
- df1.show
- df1.printSchema
- 
- Output:
- +---+--------------------+
- | id|            features|
- +---+--------------------+
- |  1|[1.0,0.0,1.0,1.0,...|
- +---+--------------------+
++---+--------------------+
+| id|            features|
++---+--------------------+
+|  1|[1.0,0.0,1.0,1.0,...|
++---+--------------------+
 
- root
-  |-- id: integer (nullable = false)
-  |-- features: vector (nullable = true)
+root
+ |-- id: integer (nullable = false)
+ |-- features: vector (nullable = true)
 
- +---+---------------+
- | id|       features|
- +---+---------------+
- |  1|[1, 0, 1, 1, 0]|
- +---+---------------+
++---+---------------+
+| id|       features|
++---+---------------+
+|  1|[1, 0, 1, 1, 0]|
++---+---------------+
 
- root
-  |-- id: integer (nullable = false)
-  |-- features: array (nullable = true)
-  |    |-- element: integer (containsNull = false)
+root
+ |-- id: integer (nullable = false)
+ |-- features: array (nullable = true)
+ |    |-- element: integer (containsNull = false)
 
- df: org.apache.spark.sql.DataFrame = [id: int, features: vector]
- df1: org.apache.spark.sql.DataFrame = [id: int, features: array<int>]
- ```
++---+---------------+
+| id|       features|
++---+---------------+
+|  1|[1, 0, 1, 1, 0]|
++---+---------------+
+
+root
+ |-- id: integer (nullable = false)
+ |-- features: array (nullable = true)
+ |    |-- element: integer (containsNull = false)
+
+df: org.apache.spark.sql.DataFrame = [id: int, features: vector]
+df1: org.apache.spark.sql.DataFrame = [id: int, features: array<int>]
+df2: org.apache.spark.sql.DataFrame = [id: int, features: array<int>] ```
