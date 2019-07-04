@@ -474,3 +474,28 @@ java.lang.IllegalArgumentException: requirement failed: Column median must be of
    * but it looks too length; need to find easy way out.
  
  * vectorIndexer also do not converts to the indexed value : https://spark.apache.org/docs/latest/ml-features.html#vectorindexer
+ * we need to understand the example given below clearly:
+ ```
+  dfArr
+ root
+  |-- id: integer (nullable = false)
+  |-- features: vector (nullable = true)
+
+ root
+  |-- id: integer (nullable = false)
+  |-- features: vector (nullable = true)
+  |-- featuresArr: array (nullable = true)
+  |    |-- element: double (containsNull = false)
+
+ +---+--------------------+--------------------+
+ | id|            features|         featuresArr|
+ +---+--------------------+--------------------+
+ |  1|[1.0,0.0,1.0,1.0,...|[1.0, 0.0, 1.0, 1...|
+ +---+--------------------+--------------------+
+
+ +---+---+---+---+---+
+ | f1| f2| f3| f4| f5|
+ +---+---+---+---+---+
+ |1.0|0.0|1.0|1.0|0.0|
+ +---+---+---+---+---+
+ ```
