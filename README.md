@@ -472,3 +472,5 @@ java.lang.IllegalArgumentException: requirement failed: Column median must be of
 
  * need to covert to array as indicated in : https://stackoverflow.com/questions/32196207/derive-multiple-columns-from-a-single-column-in-a-spark-dataframe
    * but it looks too length; need to find easy way out.
+ 
+ * vectorIndexer also do not converts to the indexed value : https://spark.apache.org/docs/latest/ml-features.html#vectorindexer
