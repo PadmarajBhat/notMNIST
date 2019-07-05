@@ -554,3 +554,4 @@ df2: org.apache.spark.sql.DataFrame = [id: int, features: array<int>] ```
    - The need of converting to array is to plot it. so shall we take the variable local ? No, big data cannot be local but can plot the big data ? But do we need to plot to identify the outlier? because we can always do the mathematical operation to determine the outlier.
    - Can we do the column ratios and determine the outlier and then decide if the algorithm improves ?
 
+* MLlib : https://spark.apache.org/docs/2.2.0/mllib-statistics.html
