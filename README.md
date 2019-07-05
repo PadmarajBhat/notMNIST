@@ -548,3 +548,7 @@ root
 df: org.apache.spark.sql.DataFrame = [id: int, features: vector]
 df1: org.apache.spark.sql.DataFrame = [id: int, features: array<int>]
 df2: org.apache.spark.sql.DataFrame = [id: int, features: array<int>] ```
+
+* Triying to decode vector slicer: https://spark.apache.org/docs/latest/ml-features.html#vectorslicer
+
+
