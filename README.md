@@ -560,7 +560,12 @@ df2: org.apache.spark.sql.DataFrame = [id: int, features: array<int>] ```
   [1.0,100.0,10000.0]
   [3.0,3.0,3.0]
   ```
-* df.stat.approxQuantile("median", Array(.25,.5,.75), 0)
+* df.stat.approxQuantile("median", Array(.25,.5,.75), 0) : http://blog.madhukaraphatak.com/statistical-data-exploration-spark-part-1/
   ```
   Array(-0.5, 5675.7588235294115, 39991.32352941176)
   ```
+  
+* ```
+  df.filter(df("median") < qrt(1) ).show
+  val qrt = df.stat.approxQuantile("median", Array(.25,.5,.75), 0)
+  ``` : to filter out the outliers but is it correct? should we confirm in plot ? Ans: no because we cant plot the big data.
