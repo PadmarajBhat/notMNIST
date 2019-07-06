@@ -557,6 +557,10 @@ df2: org.apache.spark.sql.DataFrame = [id: int, features: array<int>] ```
 * MLlib : https://spark.apache.org/docs/2.2.0/mllib-statistics.html
   ```
   [2.0,20.0,200.0]
-[1.0,100.0,10000.0]
-[3.0,3.0,3.0]
+  [1.0,100.0,10000.0]
+  [3.0,3.0,3.0]
+  ```
+* df.stat.approxQuantile("median", Array(.25,.5,.75), 0)
+  ```
+  Array(-0.5, 5675.7588235294115, 39991.32352941176)
   ```
