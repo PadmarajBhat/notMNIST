@@ -571,3 +571,5 @@ df2: org.apache.spark.sql.DataFrame = [id: int, features: array<int>] ```
   ``` : to filter out the outliers but is it correct? should we confirm in plot ? Ans: no because we cant plot the big data.
 
 * df.filter( df("median") < qrt(1) and (df("median") > qrt_2(2)) ).show :multiple condition to filter out outlier.
+
+* https://stackoverflow.com/questions/31789939/calculate-the-standard-deviation-of-grouped-data-in-a-spark-dataframe for standard deviation.
