@@ -573,3 +573,5 @@ df2: org.apache.spark.sql.DataFrame = [id: int, features: array<int>] ```
 * df.filter( df("median") < qrt(1) and (df("median") > qrt_2(2)) ).show :multiple condition to filter out outlier.
 
 * https://stackoverflow.com/questions/31789939/calculate-the-standard-deviation-of-grouped-data-in-a-spark-dataframe for standard deviation.
+
+* df.select("label").distinct.show() : now we have only 2 labels to verify the outlier logic
