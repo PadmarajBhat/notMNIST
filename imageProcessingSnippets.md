@@ -22,4 +22,22 @@ Output:
 df count: 2269, df_cuurr count: 1610
 
 ```
-  * that is the drastric change
+    * that is the drastric change in count is not so favorable but do we know for sure if it is outlier free.
+
+* changed the data structure to include file name 
+   ```
+   for (file <- (new File("/dbfs/FileStore/tables/noMNIST_small/A/")).listFiles){
+     val output = imageToArray(file.toString) 
+     if (output.isLeft){
+       val temp_array = output.left.get
+       val (lMedian, lmean, lmin, lmax) = medianDCalculator(temp_array)
+       row_1 +=((temp_array,lMedian, lmean, lmin, lmax, "A", file.toString))
+     }
+     else
+       println("Ingoring : "+ file)
+   }
+
+   val df = spark.sparkContext.parallelize(row_1).toDF("feature", "median", "mean", "min", "max", "label", "file_name")
+   df.show()
+   ```
+   * Idea is to visually display the images the and double check the approach
