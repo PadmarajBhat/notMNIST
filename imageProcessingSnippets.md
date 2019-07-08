@@ -46,3 +46,12 @@ df count: 2269, df_cuurr count: 1610
  ```
    java.lang.IllegalArgumentException: Field "features" does not exist.
  ```
+ 
+ * https://stackoverflow.com/questions/44950897/field-features-does-not-exist-sparkml covers the issue but it not only misses the line below but also leading me to one more exception
+ ```
+ https://stackoverflow.com/questions/44950897/field-features-does-not-exist-sparkml
+ ```
+ Output:
+ ```
+ error: value summary is not a member of org.apache.spark.ml.PipelineModel
+ ```
