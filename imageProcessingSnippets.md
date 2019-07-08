@@ -41,3 +41,8 @@ df count: 2269, df_cuurr count: 1610
    df.show()
    ```
    * Idea is to visually display the images the and double check the approach
+   
+ * https://spark.apache.org/docs/latest/ml-classification-regression.html#multinomial-logistic-regression
+ ```
+   java.lang.IllegalArgumentException: Field "features" does not exist.
+ ```
