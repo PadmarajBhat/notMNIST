@@ -69,3 +69,9 @@ https://elbauldelprogramador.com/en/how-to-convert-column-to-vectorudt-densevect
 however, assembler fails to vectorize the double data type
    
 * got a hint : ("feature", "median", "mean") dint work but ( "median", "mean") worked 
+
+* https://stackoverflow.com/a/47543887/8693106 : to convert from array of double to vectors
+```
+def convertArrayToVector = udf((features: mutable.WrappedArray[Double]) => Vectors.dense(features.toArray))
+```
+   Ideas is to create a udf to convert from wrapped Array to vector dence. Note here if we change the type to only "Array" and not "WrappedArray", the code fails in execution (though compilation is successfull)
