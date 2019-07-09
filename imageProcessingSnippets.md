@@ -62,4 +62,10 @@ df count: 2269, df_cuurr count: 1610
    ```
    this does not have "lr" functions. Wondering why last transform has not given pipeline its function.
    
+* I found easy transform function : https://elbauldelprogramador.com/en/how-to-convert-column-to-vectorudt-densevector-spark/
+```
+https://elbauldelprogramador.com/en/how-to-convert-column-to-vectorudt-densevector-spark/
+```
+however, assembler fails to vectorize the double data type
+   
    
