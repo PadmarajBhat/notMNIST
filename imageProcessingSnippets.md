@@ -75,3 +75,6 @@ however, assembler fails to vectorize the double data type
 def convertArrayToVector = udf((features: mutable.WrappedArray[Double]) => Vectors.dense(features.toArray))
 ```
    Ideas is to create a udf to convert from wrapped Array to vector dence. Note here if we change the type to only "Array" and not "WrappedArray", the code fails in execution (though compilation is successfull)
+   
+* Logistic Regression fails at compile time with Exception: requirement failed- Column label must be of type numeric but was actually of type string.
+   * now it is debatable to have the numberical representation  through simple text to numeric encoding or one hot encoding. I believe for classification it has to be one hot encoding.
