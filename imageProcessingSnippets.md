@@ -68,4 +68,4 @@ https://elbauldelprogramador.com/en/how-to-convert-column-to-vectorudt-densevect
 ```
 however, assembler fails to vectorize the double data type
    
-   
+* got a hint : ("feature", "median", "mean") dint work but ( "median", "mean") worked 
