@@ -55,3 +55,11 @@ df count: 2269, df_cuurr count: 1610
  ```
  error: value summary is not a member of org.apache.spark.ml.PipelineModel
  ```
+
+* error with pipeline model
+   ```
+   val pipeline = new Pipeline().setStages(Array(assembler, lr))
+   ```
+   this does not have "lr" functions. Wondering why last transform has not given pipeline its function.
+   
+   
