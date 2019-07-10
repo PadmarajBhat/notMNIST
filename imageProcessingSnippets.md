@@ -117,5 +117,70 @@ def convertArrayToVector = udf((features: mutable.WrappedArray[Double]) => Vecto
       +--------------+--------------+-------------+-------------+---------+
       ```
       cv1 - 3rd and 4th row confuses me. Would it create problem when building model ?
-      
+* mystery of one hot encoding
+
+```
+import org.apache.spark.ml.feature.OneHotEncoderEstimator
+
+val df = spark.createDataFrame(Seq(
+  (0.0, 1.0),
+  (1.0, 0.0),
+  (2.0, 1.0),
+  (0.0, 20.0),
+  (0.0, 1.0),
+  (3.0, 0.0)
+)).toDF("categoryIndex1", "categoryIndex2")
+
+val encoder = new OneHotEncoderEstimator()
+  .setInputCols(Array("categoryIndex1", "categoryIndex2"))
+  .setOutputCols(Array("categoryVec1", "categoryVec2"))
+val model = encoder.fit(df)
+
+val encoded = model.transform(df)
+encoded.show()
+encoded.printSchema
+
+
+val assembler = new VectorAssembler()
+  .setInputCols( Array("categoryVec1"))
+  .setOutputCol("cv1")
+
+val out = assembler.transform(encoded)
+
+println(out.show())
+
+val assembler2 = new VectorAssembler()
+  .setInputCols( Array("categoryVec2"))
+  .setOutputCol("cv2")
+
+val out2 = assembler2.transform(out)
+
+println(out2.show())
+```
+
+   * Output:
+   ```
+   +--------------+--------------+-------------+--------------+-------------+
+   |categoryIndex1|categoryIndex2| categoryVec1|  categoryVec2|          cv1|
+   +--------------+--------------+-------------+--------------+-------------+
+   |           0.0|           1.0|(3,[0],[1.0])|(20,[1],[1.0])|[1.0,0.0,0.0]|
+   |           1.0|           0.0|(3,[1],[1.0])|(20,[0],[1.0])|[0.0,1.0,0.0]|
+   |           2.0|           1.0|(3,[2],[1.0])|(20,[1],[1.0])|[0.0,0.0,1.0]|
+   |           0.0|          20.0|(3,[0],[1.0])|    (20,[],[])|[1.0,0.0,0.0]|
+   |           0.0|           1.0|(3,[0],[1.0])|(20,[1],[1.0])|[1.0,0.0,0.0]|
+   |           3.0|           0.0|    (3,[],[])|(20,[0],[1.0])|    (3,[],[])|
+   +--------------+--------------+-------------+--------------+-------------+
+
+
+   +--------------+--------------+-------------+--------------+-------------+--------------+
+   |categoryIndex1|categoryIndex2| categoryVec1|  categoryVec2|          cv1|           cv2|
+   +--------------+--------------+-------------+--------------+-------------+--------------+
+   |           0.0|           1.0|(3,[0],[1.0])|(20,[1],[1.0])|[1.0,0.0,0.0]|(20,[1],[1.0])|
+   |           1.0|           0.0|(3,[1],[1.0])|(20,[0],[1.0])|[0.0,1.0,0.0]|(20,[0],[1.0])|
+   |           2.0|           1.0|(3,[2],[1.0])|(20,[1],[1.0])|[0.0,0.0,1.0]|(20,[1],[1.0])|
+   |           0.0|          20.0|(3,[0],[1.0])|    (20,[],[])|[1.0,0.0,0.0]|    (20,[],[])|
+   |           0.0|           1.0|(3,[0],[1.0])|(20,[1],[1.0])|[1.0,0.0,0.0]|(20,[1],[1.0])|
+   |           3.0|           0.0|    (3,[],[])|(20,[0],[1.0])|    (3,[],[])|(20,[0],[1.0])|
+   +--------------+--------------+-------------+--------------+-------------+--------------+
+   ```
       
