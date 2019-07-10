@@ -78,3 +78,8 @@ def convertArrayToVector = udf((features: mutable.WrappedArray[Double]) => Vecto
    
 * Logistic Regression fails at compile time with Exception: requirement failed- Column label must be of type numeric but was actually of type string.
    * now it is debatable to have the numberical representation  through simple text to numeric encoding or one hot encoding. I believe for classification it has to be one hot encoding.
+
+* https://spark.apache.org/docs/latest/ml-features.html#vectorindexer : VideoIndexer as described in the link is not applicable in our case because
+      * we have "flattened" the 2d image data to 1d array
+      * vector transformation has merged the columns mean and median to the image data (1d array)
+      * post executing the vectorindexer, it accidentally pointed out the image data to have categorical values.
