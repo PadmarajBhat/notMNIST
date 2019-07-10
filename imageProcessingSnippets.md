@@ -83,3 +83,39 @@ def convertArrayToVector = udf((features: mutable.WrappedArray[Double]) => Vecto
       * we have "flattened" the 2d image data to 1d array
       * vector transformation has merged the columns mean and median to the image data (1d array)
       * post executing the vectorindexer, it accidentally pointed out the image data to have categorical values.
+      
+* For current image dataset we do not require any vector indexer as it does not have categorical data. Hence, skipping this exercise for now and will take up fo other dataset. For now let us focus on the label encoding which is the next exception in our code.
+      * https://spark.apache.org/docs/latest/ml-features.html#onehotencoderestimator
+      ```
+      val assembler = new VectorAssembler()
+        .setInputCols( Array("categoryVec1"))
+        .setOutputCol("cv1")
+
+      val out = assembler.transform(encoded)
+      
+      Output:
+      +--------------+--------------+-------------+-------------+
+      |categoryIndex1|categoryIndex2| categoryVec1| categoryVec2|
+      +--------------+--------------+-------------+-------------+
+      |           0.0|           1.0|(2,[0],[1.0])|(2,[1],[1.0])|
+      |           1.0|           0.0|(2,[1],[1.0])|(2,[0],[1.0])|
+      |           2.0|           1.0|    (2,[],[])|(2,[1],[1.0])|
+      |           0.0|           2.0|(2,[0],[1.0])|    (2,[],[])|
+      |           0.0|           1.0|(2,[0],[1.0])|(2,[1],[1.0])|
+      |           2.0|           0.0|    (2,[],[])|(2,[0],[1.0])|
+      +--------------+--------------+-------------+-------------+
+
+      +--------------+--------------+-------------+-------------+---------+
+      |categoryIndex1|categoryIndex2| categoryVec1| categoryVec2|      cv1|
+      +--------------+--------------+-------------+-------------+---------+
+      |           0.0|           1.0|(2,[0],[1.0])|(2,[1],[1.0])|[1.0,0.0]|
+      |           1.0|           0.0|(2,[1],[1.0])|(2,[0],[1.0])|[0.0,1.0]|
+      |           2.0|           1.0|    (2,[],[])|(2,[1],[1.0])|(2,[],[])|
+      |           0.0|           2.0|(2,[0],[1.0])|    (2,[],[])|[1.0,0.0]|
+      |           0.0|           1.0|(2,[0],[1.0])|(2,[1],[1.0])|[1.0,0.0]|
+      |           2.0|           0.0|    (2,[],[])|(2,[0],[1.0])|(2,[],[])|
+      +--------------+--------------+-------------+-------------+---------+
+      ```
+      cv1 - 3rd and 4th row confuses me. Would it create problem when building model ?
+      
+      
