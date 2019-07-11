@@ -183,4 +183,4 @@ println(out2.show())
    |           3.0|           0.0|    (3,[],[])|(20,[0],[1.0])|    (3,[],[])|(20,[0],[1.0])|
    +--------------+--------------+-------------+--------------+-------------+--------------+
    ```
-      
+ * found databricks to be slow when we load the image and hence was exploring colab option as indicated in blog : https://medium.com/@shadaj/machine-learning-with-scala-in-google-colaboratory-e6f1661f1c88
