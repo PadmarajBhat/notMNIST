@@ -117,6 +117,8 @@ def convertArrayToVector = udf((features: mutable.WrappedArray[Double]) => Vecto
       +--------------+--------------+-------------+-------------+---------+
       ```
       cv1 - 3rd and 4th row confuses me. Would it create problem when building model ?
+      
+      
 * mystery of one hot encoding
 
 ```
@@ -183,6 +185,31 @@ println(out2.show())
    |           3.0|           0.0|    (3,[],[])|(20,[0],[1.0])|    (3,[],[])|(20,[0],[1.0])|
    +--------------+--------------+-------------+--------------+-------------+--------------+
    ```
+   
+   However, slight change in dataset gives different result
+   ```
+   val df = spark.createDataFrame(Seq(
+     (0.0, 1.0),
+     (1.0, 3.0),
+     (2.0, 1.0),
+     (0.0, 2.0),
+     (0.0, 1.0),
+     (3.0, 3.0)
+      )).toDF("categoryIndex1", "categoryIndex2")
+      
+   +--------------+--------------+-------------+-------------+-------------+-------------+
+   |categoryIndex1|categoryIndex2| categoryVec1| categoryVec2|          cv1|          cv2|
+   +--------------+--------------+-------------+-------------+-------------+-------------+
+   |           0.0|           1.0|(3,[0],[1.0])|(3,[1],[1.0])|[1.0,0.0,0.0]|[0.0,1.0,0.0]|
+   |           1.0|           3.0|(3,[1],[1.0])|    (3,[],[])|[0.0,1.0,0.0]|    (3,[],[])|
+   |           2.0|           1.0|(3,[2],[1.0])|(3,[1],[1.0])|[0.0,0.0,1.0]|[0.0,1.0,0.0]|
+   |           0.0|           2.0|(3,[0],[1.0])|(3,[2],[1.0])|[1.0,0.0,0.0]|[0.0,0.0,1.0]|
+   |           0.0|           1.0|(3,[0],[1.0])|(3,[1],[1.0])|[1.0,0.0,0.0]|[0.0,1.0,0.0]|
+   |           3.0|           3.0|    (3,[],[])|    (3,[],[])|    (3,[],[])|    (3,[],[])|
+   +--------------+--------------+-------------+-------------+-------------+-------------+
+
+   ```
+   
  * found databricks to be slow when we load the image and hence was exploring colab option as indicated in blog : https://medium.com/@shadaj/machine-learning-with-scala-in-google-colaboratory-e6f1661f1c88
       ```
       /bin/bash: line 8: /usr/local/share/jupyter/kernels/scala/kernel.json: No such file or directory
