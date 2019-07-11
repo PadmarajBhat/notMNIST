@@ -184,3 +184,28 @@ println(out2.show())
    +--------------+--------------+-------------+--------------+-------------+--------------+
    ```
  * found databricks to be slow when we load the image and hence was exploring colab option as indicated in blog : https://medium.com/@shadaj/machine-learning-with-scala-in-google-colaboratory-e6f1661f1c88
+      ```
+      /bin/bash: line 8: /usr/local/share/jupyter/kernels/scala/kernel.json: No such file or directory
+      ---------------------------------------------------------------------------
+      CalledProcessError                        Traceback (most recent call last)
+      <ipython-input-1-bf16215afe62> in <module>()
+      ----> 1 get_ipython().run_cell_magic('shell', '', 'echo "{\n  \\"language\\" : \\"scala\\",\n  \\"display_name\\" : \\"Scala\\",\n  \\"argv\\" : [\n    \\"bash\\",\n    \\"-c\\",\n    \\"env LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libpython3.6m.so:\\$LD_PRELOAD java -jar /usr/local/share/jupyter/kernels/scala/launcher.jar --connection-file {connection_file}\\"\n  ]\n}" > /usr/local/share/jupyter/kernels/scala/kernel.json')
+
+      2 frames
+      /usr/local/lib/python3.6/dist-packages/google/colab/_system_commands.py in check_returncode(self)
+          136     if self.returncode:
+          137       raise subprocess.CalledProcessError(
+      --> 138           returncode=self.returncode, cmd=self.args, output=self.output)
+          139 
+          140   def _repr_pretty_(self, p, cycle):  # pylint:disable=unused-argument
+
+      CalledProcessError: Command 'echo "{
+        \"language\" : \"scala\",
+        \"display_name\" : \"Scala\",
+        \"argv\" : [
+          \"bash\",
+          \"-c\",
+          \"env LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libpython3.6m.so:\$LD_PRELOAD java -jar /usr/local/share/jupyter/kernels/scala/launcher.jar --connection-file {connection_file}\"
+        ]
+      }" > /usr/local/share/jupyter/kernels/scala/kernel.json' returned non-zero exit status 1.
+      ```
