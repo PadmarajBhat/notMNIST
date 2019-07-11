@@ -209,3 +209,6 @@ println(out2.show())
         ]
       }" > /usr/local/share/jupyter/kernels/scala/kernel.json' returned non-zero exit status 1.
       ```
+      
+      
+* pyspark on colab worked just mentioned in https://towardsdatascience.com/pyspark-in-google-colab-6821c2faf41c
