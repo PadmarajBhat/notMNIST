@@ -239,3 +239,5 @@ println(out2.show())
       
       
 * pyspark on colab worked just mentioned in https://towardsdatascience.com/pyspark-in-google-colab-6821c2faf41c
+
+* we need to have stringindexer before to onehotencoding as per spark manual:https://spark.apache.org/docs/latest/ml-features.html#stringindexer
