@@ -245,4 +245,6 @@ println(out2.show())
 * onehotencoding did result in the required shape but the vector representation of the last value is still not clear.
    * (2, [], []) Here it might indicate that it is a vector of size 2 and there are 2 null/none/empty entries.
       - would it impact the ml algo ?
-      
+* tried multi class problem as in : https://spark.apache.org/docs/2.2.0/ml-classification-regression.html#multinomial-logistic-regression
+   * spark could load the local file (as indicated in the above link) and the "show" indicated that the label it expect is not the vector but not the one hot encoded vector.
+      - Now this is debatable that since the label is not a continuous value, it has to be one hot encoded. However, multinominal logistic regresion could handle it correctly.
