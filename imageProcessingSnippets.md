@@ -241,3 +241,8 @@ println(out2.show())
 * pyspark on colab worked just mentioned in https://towardsdatascience.com/pyspark-in-google-colab-6821c2faf41c
 
 * we need to have stringindexer before to onehotencoding as per spark manual:https://spark.apache.org/docs/latest/ml-features.html#stringindexer
+
+* onehotencoding did result in the required shape but the vector representation of the last value is still not clear.
+   * (2, [], []) Here it might indicate that it is a vector of size 2 and there are 2 null/none/empty entries.
+      - would it impact the ml algo ?
+      
