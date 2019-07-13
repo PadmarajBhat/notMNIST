@@ -258,4 +258,12 @@ println(out2.show())
    recall: Double = 0.8250330542089026
    ```
 
-
+* I ran LR with the dataset and with no outlier removal
+   ```
+   accuracy: Double = 0.8250330542089026
+   falsePositiveRate: Double = 0.8250330542089026
+   truePositiveRate: Double = 0.8250330542089026
+   fMeasure: Double = 0.745936671083828
+   precision: Double = 0.68067954053727
+   recall: Double = 0.8250330542089026
+   ```
