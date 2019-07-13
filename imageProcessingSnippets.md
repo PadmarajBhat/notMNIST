@@ -249,3 +249,13 @@ println(out2.show())
    * spark could load the local file (as indicated in the above link) and the "show" indicated that the label it expect is not the vector but not the one hot encoded vector.
       - Now this is debatable that since the label is not a continuous value, it has to be one hot encoded. However, multinominal logistic regresion could handle it correctly.
 * I was able to build the multinomial logistic regression and got the precession around 0.86. Need to expand the same for different letters in the dataset and need to check if precision goes down. Most importantly, mean and median helped us or not
+   ```
+   accuracy: Double = 0.8250330542089026
+   falsePositiveRate: Double = 0.8250330542089026
+   truePositiveRate: Double = 0.8250330542089026
+   fMeasure: Double = 0.745936671083828
+   precision: Double = 0.68067954053727
+   recall: Double = 0.8250330542089026
+   ```
+
+
