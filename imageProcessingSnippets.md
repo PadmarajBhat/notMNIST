@@ -269,3 +269,8 @@ println(out2.show())
    ```
    
  * The arrray of double is actually causing problem even when dataframe write to a file. It expects it to have vectors instead of array. Hence changed logic in the imageArray to save ml.linalg.Vector instead of Array.
+   ```org.apache.spark.sql.AnalysisException: CSV data source does not support array<double> data type.;```
+   
+ * Saved the 3 class label loaded dataframe in the json format through the file check trick mentioned in : https://stackoverflow.com/a/21178667/8693106
+   - Idea is to build once and save it as "ImageData.json"
+   - In next subsequent run of the program check for the file exists (refer link) and if present it load it directly.
