@@ -267,3 +267,5 @@ println(out2.show())
    precision: Double = 0.68067954053727
    recall: Double = 0.8250330542089026
    ```
+   
+ * The arrray of double is actually causing problem even when dataframe write to a file. It expects it to have vectors instead of array. Hence changed logic in the imageArray to save ml.linalg.Vector instead of Array.
