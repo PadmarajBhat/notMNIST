@@ -293,3 +293,11 @@ org.apache.spark.SparkException: Job aborted due to stage failure: Task 3 in sta
 ```
 display(spark.read.format("image").load("/FileStore/tables/noMNIST_small/A/RmlsdGVDYXN1YWwudHRm.png"))
 ```
+
+* Apperantly we cant loop over the filenames to display:
+   ```
+   for ( i <- df_A.select("file_name").sample(.01).take(1)){
+     //println(i(0))
+     display(spark.read.format("image").load(i(0).toString.slice(5,200)))
+   }
+   ```
