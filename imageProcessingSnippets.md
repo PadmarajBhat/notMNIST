@@ -288,3 +288,8 @@ println(out2.show())
 ```
 org.apache.spark.SparkException: Job aborted due to stage failure: Task 3 in stage 3174.0 failed 1 times, most recent failure: Lost task 3.0 in stage 3174.0 (TID 219158, localhost, executor driver): java.lang.IllegalArgumentException: requirement failed: GBTClassifier was given dataset with invalid label 2.0.  Labels must be in {0,1}; note that GBTClassifier currently only supports binary classification.
 ```
+
+* you can display the outliers through :
+```
+display(spark.read.format("image").load("/FileStore/tables/noMNIST_small/A/RmlsdGVDYXN1YWwudHRm.png"))
+```
