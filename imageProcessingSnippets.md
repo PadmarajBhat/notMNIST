@@ -274,3 +274,13 @@ println(out2.show())
  * Saved the 3 class label loaded dataframe in the json format through the file check trick mentioned in : https://stackoverflow.com/a/21178667/8693106
    - Idea is to build once and save it as "ImageData.json"
    - In next subsequent run of the program check for the file exists (refer link) and if present it load it directly.
+
+ * with 3 classes the LR statistically reduced:
+   ```
+   accuracy: Double = 0.4651545036160421
+   falsePositiveRate: Double = 0.4651545036160421
+   truePositiveRate: Double = 0.4651545036160421
+   fMeasure: Double = 0.2953527586343727
+   precision: Double = 0.21636871223428653
+   recall: Double = 0.4651545036160421
+   ```
