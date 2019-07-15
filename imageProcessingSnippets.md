@@ -301,3 +301,11 @@ display(spark.read.format("image").load("/FileStore/tables/noMNIST_small/A/Rmlsd
      display(spark.read.format("image").load(i(0).toString.slice(5,200)))
    }
    ```
+* This worked:https://stackoverflow.com/q/50890344/8693106
+```
+val paths = Seq(
+  "/FileStore/tables/noMNIST_small/A/RmFnb05vLUJsYWNrQ2Fwcy5vdGY_-2d148.png",
+  "/FileStore/tables/noMNIST_small/A/RmVuaWNlIEl0YWxpYy50dGY_-7f88f.png")
+
+display(spark.read.format("image").load(paths: _*))
+```
