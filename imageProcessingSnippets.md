@@ -309,3 +309,12 @@ val paths = Seq(
 
 display(spark.read.format("image").load(paths: _*))
 ```
+   * Entire list of outlier as per mean and medians can be found through 
+   ```
+   var temp :Seq[String] = Seq()
+   for (c <- df_A.select("file_name").collect()){
+     println(c.toString.slice(6,c.toString.length -1))
+     temp = temp :+ c.toString.slice(6,c.toString.length -1)
+   }
+   display(spark.read.format("image").load(temp: _*))
+   ```
