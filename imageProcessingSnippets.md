@@ -318,3 +318,5 @@ display(spark.read.format("image").load(paths: _*))
    }
    display(spark.read.format("image").load(temp: _*))
    ```
+   
+   * between the median and mean, mean could better identify the outlier. i.e. A images which are not A
